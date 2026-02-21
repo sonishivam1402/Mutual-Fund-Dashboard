@@ -162,4 +162,13 @@
   h1, h2, h3 {
     @apply tracking-tight;
   }
+  /* Pointer cursor for interactive elements */
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a[href],
+  label[for],
+  select,
+  summary {
+    @apply cursor-pointer;
+  }
 }
