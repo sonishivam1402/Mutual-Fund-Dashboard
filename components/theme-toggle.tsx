@@ -12,7 +12,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="rounded-xl shrink-0"
+      className="min-h-11 min-w-11 rounded-xl shrink-0 sm:min-h-9 sm:min-w-9"
       aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
     >
       {theme === 'dark' ? (

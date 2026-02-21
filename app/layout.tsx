@@ -52,7 +52,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen font-sans bg-background text-foreground">
         <ThemeProvider>
-          <div className="fixed top-10 right-35 z-50">
+          <div
+            className="fixed z-50 flex justify-end"
+            style={{
+              top: 'max(1rem, env(safe-area-inset-top))',
+              right: 'max(1rem, env(safe-area-inset-right))',
+            }}
+          >
             <ThemeToggle />
           </div>
           {children}

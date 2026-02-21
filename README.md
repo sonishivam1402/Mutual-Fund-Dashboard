@@ -2,6 +2,8 @@
 
 A professional mutual fund discovery and comparison platform with fund details, SIP calculator, and light/dark theme. Built with Next.js, React, and TypeScript.
 
+**Live demo:** [https://mutual-funds-dashboard.vercel.app/](https://mutual-funds-dashboard.vercel.app/)
+
 ## Features
 
 ### Fund Discovery (`/discovery`)
