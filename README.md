@@ -1,124 +1,127 @@
 # Mutual Fund Dashboard
 
-A professional fintech mutual fund discovery and comparison platform built with Next.js, React, and TypeScript.
+A professional mutual fund discovery and comparison platform with fund details, SIP calculator, and light/dark theme. Built with Next.js, React, and TypeScript.
 
 ## Features
 
-### Fund Discovery Page (`/discovery`)
-- **Browse Funds**: Discover 6+ mutual funds with detailed metrics
-- **Search & Filter**: Search by fund name or symbol, filter by category
-- **Quick Selection**: Select up to 3 funds for comparison
-- **Key Metrics Display**: 1-year returns, risk score, volatility, and AUM at a glance
-- **Real-time Status**: See selected funds and navigate to comparison with a single click
+### Fund Discovery (`/discovery`)
+- **Browse funds** with cards showing image, name, symbol, category, 1Y return, risk score, volatility, and AUM
+- **Search & filter** by fund name or symbol; filter by category (pill buttons)
+- **Select for comparison** – choose up to 3 funds via “Select to Compare” on each card
+- **View Detail** – open a dedicated page for any fund
+- **Compare Funds** – navigate to comparison only when 2+ funds are selected (prompt to “Select at least 2 funds” if only one is selected)
+- **Unselect all** – clear all selected funds at once (button next to Compare Funds)
+- **Selection bar** – shows count and names of selected funds, with Compare and Unselect all actions
 
-### Fund Comparison Page (`/comparison`)
-- **Multi-Fund Comparison**: Compare 1-3 funds side-by-side
-- **Performance Charts**: Line chart showing returns across 1Y, 3Y, 5Y, and 10Y periods
-- **Asset Allocation**: Pie charts showing fund allocation breakdown
-- **Comprehensive Table**: Detailed metrics comparison including:
-  - Fund information (AUM, NAV, expense ratio)
-  - Historical returns (1Y, 3Y, 5Y, 10Y)
-  - Risk metrics (risk score, volatility)
-- **Top Holdings**: View the top 5 holdings for each fund
+### Fund Detail (`/fund/[id]`)
+- **Header** with fund image, name, symbol, and category badge
+- **Key metrics** – NAV, AUM, expense ratio, risk, volatility, manager, inception
+- **Returns** – 1Y, 3Y, 5Y, 10Y with color-coded values
+- **SIP Calculator (Returns Estimator)** – monthly amount (₹), duration (1–30 years) slider, expected return (8–30%) slider; outputs total invested, estimated returns, and maturity amount with a donut chart (purple/green) and “INVEST NOW” button
+- **Asset allocation** – pie chart by sector
+- **Top holdings** – list with name, symbol, and percentage
+
+### Fund Comparison (`/comparison`)
+- **Summary cards** for each selected fund (image, name, symbol, manager, inception)
+- **Returns comparison** – line chart across 1Y, 3Y, 5Y, 10Y with theme-aligned colors
+- **Asset allocation** – pie charts per fund
+- **Detailed comparison table** – category, AUM, NAV, expense ratio, returns, risk score, volatility
+- **Top holdings** – per fund with image and holding list
+
+### Theme & UX
+- **Light / dark theme** – toggle in the top-right (sun/moon). Preference stored in `localStorage`; default follows system or falls back to dark
+- **Dark theme default** – charcoal background, purple accent, green for positive returns
+- **Charts** – purple/blue/green palette; tooltips and axes styled for current theme
+- **Pointer cursor** on buttons, links, and other interactive elements
 
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
-- **UI Components**: shadcn/ui
-- **State Management**: Zustand with localStorage persistence
-- **Charts**: Recharts
-- **Styling**: Tailwind CSS
+- **UI**: shadcn/ui (Radix primitives), Tailwind CSS v4
+- **State**: Zustand with `localStorage` persistence (selected funds + theme)
+- **Charts**: Recharts (line, pie, donut)
 - **Icons**: Lucide React
 
 ## Getting Started
 
-1. **Install Dependencies**
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+   or
    ```bash
    pnpm install
    ```
 
-2. **Run Development Server**
+2. **Run the dev server**
+   ```bash
+   npm run dev
+   ```
+   or
    ```bash
    pnpm dev
    ```
 
-3. **Open in Browser**
-   Navigate to `http://localhost:3000` - you'll be automatically redirected to the discovery page
+3. **Open in browser**  
+   Go to `http://localhost:3000` – you’ll be redirected to `/discovery`.
 
 ## Project Structure
 
 ```
 ├── app/
-│   ├── discovery/page.tsx      # Fund discovery and browsing
-│   ├── comparison/page.tsx     # Fund comparison interface
-│   ├── page.tsx                # Redirect to discovery
-│   ├── layout.tsx              # Root layout
-│   └── globals.css             # Global styles & design tokens
+│   ├── page.tsx              # Redirects to /discovery
+│   ├── layout.tsx            # Root layout, theme script, ThemeProvider, ThemeToggle
+│   ├── globals.css           # Theme variables (light/dark), base styles
+│   ├── discovery/
+│   │   └── page.tsx          # Fund list, filters, selection bar, Compare / Unselect all
+│   ├── fund/
+│   │   └── [id]/page.tsx     # Fund detail, metrics, returns, SIP calculator, allocation, holdings
+│   └── comparison/
+│       └── page.tsx          # Compare selected funds, charts, table, holdings
 ├── components/
-│   ├── fund-card.tsx           # Individual fund card with selection
-│   ├── filter-bar.tsx          # Search and category filters
-│   ├── compare-chart.tsx       # Performance line chart
-│   ├── compare-table.tsx       # Detailed comparison table
-│   └── allocation-chart.tsx    # Asset allocation pie chart
+│   ├── fund-card.tsx         # Fund card with image, metrics, View Detail & Select to Compare
+│   ├── filter-bar.tsx        # Search input and category pills
+│   ├── compare-chart.tsx     # Returns line chart
+│   ├── compare-table.tsx     # Metrics comparison table
+│   ├── allocation-chart.tsx  # Allocation pie chart
+│   ├── theme-provider.tsx    # Theme context, localStorage, apply class to document
+│   ├── theme-toggle.tsx      # Sun/moon toggle button
+│   └── ui/                   # shadcn components (button, card, input, slider, etc.)
 ├── lib/
-│   ├── store.ts                # Zustand store for fund selection
-│   ├── fund-utils.ts           # Formatting and calculation utilities
-│   └── utils.ts                # General utilities
+│   ├── store.ts              # Zustand store: selectedFunds, addFund, removeFund, clearSelected
+│   ├── fund-utils.ts         # formatPercent, getReturnColor, getRiskBadgeColor, CHART_COLORS, etc.
+│   └── utils.ts              # cn() and helpers
 └── public/
-    └── funds.json              # Mock fund data
+    └── funds.json            # Fund data (id, name, symbol, image, category, metrics, allocation, holdings)
 ```
 
 ## Design System
 
-### Color Palette
-- **Primary**: Deep Blue (#3B5DE8) - Primary actions and highlights
-- **Accent**: Teal (#40B4B4) - Secondary accents
-- **Neutral**: Gray scale - Text, borders, backgrounds
-- **Success**: Green - Positive returns
-- **Danger**: Red - Negative returns/risk
-
-### Key Design Features
-- **Fintech Aesthetic**: Clean, professional interface with soft shadows
-- **Responsive Design**: Mobile-first approach with breakpoints for tablet and desktop
-- **Color-Coded Returns**: Visual indicators for performance metrics
-- **Risk Badges**: Color-coded risk indicators (Low, Moderate, High, Very High)
-- **Smooth Transitions**: Polished interactions and hover states
+- **Dark theme (default)**: Charcoal background, lighter cards, purple primary/accent, muted text; green for positive returns, red for negative
+- **Light theme**: Light background and cards, purple primary, semantic borders and muted text
+- **Charts**: Purple, blue, green, orange, teal (shared palette in `lib/fund-utils.ts`)
+- **Risk badges**: Low (green), Moderate (blue), High (amber), Very High (red) with transparent backgrounds for dark mode
+- **Responsive**: Stacked on mobile; side-by-side buttons and grids on larger breakpoints; rounded-2xl cards and consistent spacing
 
 ## Data
 
-Fund data is stored in `public/funds.json` with 6 sample funds:
-1. Vanguard Large-Cap Growth (VLCGX)
-2. Fidelity Mid Cap Growth (FMCGX)
-3. Schwab U.S. Small-Cap Index (SWTSX)
-4. T. Rowe Price New America Growth (PRWAX)
-5. Vanguard Dividend Appreciation Index (VIG)
-6. PIMCO Total Return Fund (PTTRX)
+Fund data lives in `public/funds.json`. Each fund has:
 
-Each fund includes:
-- Basic info (name, symbol, category)
-- Performance metrics (1Y, 3Y, 5Y, 10Y returns)
-- Risk assessment (risk score, volatility)
-- Asset allocation
-- Top holdings
-- Fund manager info
+- **Identity**: `id`, `name`, `symbol`, `image` (URL), `category`
+- **Metrics**: `aum`, `nav`, `expenseRatio`, `returns` (oneYear, threeYear, fiveYear, tenYear), `riskScore`, `volatility`
+- **Structure**: `allocation` (sector percentages), `holdings` (name, symbol, percentage)
+- **Meta**: `inception`, `manager`
+
+Sample funds include SBI Bluechip, Axis Midcap, Nippon India Small Cap, and others (structure supports any number of funds).
 
 ## State Management
 
-Uses Zustand for persistent fund selection:
-- **Max 3 Funds**: Can select up to 3 funds for comparison
-- **LocalStorage**: Selection persists across sessions
-- **Immediate Updates**: Real-time UI updates on selection/deselection
-
-## Future Enhancements
-
-- Fetch real fund data from an API
-- User authentication for saving comparisons
-- Portfolio allocation recommendations
-- Risk analysis tools
-- Historical performance tracking
-- Fund rating and reviews system
-- Export comparison reports
+- **Zustand** (`lib/store.ts`) with `persist`:
+  - `selectedFunds` – up to 3 funds for comparison
+  - `addFund` / `removeFund` / `clearSelected`
+  - `canAddMore()` – true when fewer than 3 selected
+- **Theme** – stored in `localStorage` under `mutual-fund-theme` (`"light"` | `"dark"`); applied via class on `<html>` and an inline script to avoid flash.
 
 ## License
 
