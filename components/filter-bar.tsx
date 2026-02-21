@@ -20,14 +20,14 @@ export function FilterBar({
   categories,
 }: FilterBarProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4 pointer-events-none" />
         <Input
           placeholder="Search by fund name or symbol..."
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="pl-10 bg-white"
+          className="pl-10 h-11 rounded-xl bg-background border-border focus-visible:ring-2"
         />
       </div>
 
@@ -36,7 +36,7 @@ export function FilterBar({
           onClick={() => onCategoryChange('')}
           variant={selectedCategory === '' ? 'default' : 'outline'}
           size="sm"
-          className={selectedCategory === '' ? 'bg-primary text-white' : ''}
+          className={`rounded-full transition-colors ${selectedCategory === '' ? '' : 'hover:bg-muted'}`}
         >
           All Categories
         </Button>
@@ -46,7 +46,7 @@ export function FilterBar({
             onClick={() => onCategoryChange(category)}
             variant={selectedCategory === category ? 'default' : 'outline'}
             size="sm"
-            className={selectedCategory === category ? 'bg-primary text-white' : ''}
+            className={`rounded-full transition-colors ${selectedCategory === category ? '' : 'hover:bg-muted'}`}
           >
             {category}
           </Button>

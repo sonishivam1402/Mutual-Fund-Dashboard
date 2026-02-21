@@ -76,11 +76,11 @@ export function FundCard({
   };
 
   return (
-    <Card className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
+    <Card className="group rounded-2xl border border-border bg-card shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-200">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-3">
           {image && (
-            <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
+            <div className="shrink-0 w-12 h-12 rounded-xl overflow-hidden bg-muted border border-border">
               <img
                 src={image}
                 alt={name}
@@ -89,38 +89,38 @@ export function FundCard({
             </div>
           )}
           <div className="flex-1 min-w-0">
-            <CardTitle className="text-lg">{name}</CardTitle>
+            <CardTitle className="text-lg font-semibold tracking-tight">{name}</CardTitle>
             <CardDescription className="text-sm">{symbol}</CardDescription>
           </div>
-          <Badge variant="outline" className="text-xs shrink-0">{category}</Badge>
+          <Badge variant="secondary" className="text-xs shrink-0 rounded-full font-medium">{category}</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-600">1Y Return</span>
-            <span className={`text-sm font-semibold ${getReturnColor(returns.oneYear)}`}>
+            <span className="text-sm text-muted-foreground">1Y Return</span>
+            <span className={`text-sm font-semibold tabular-nums ${getReturnColor(returns.oneYear)}`}>
               {returns.oneYear >= 0 ? '+' : ''}{formatPercent(returns.oneYear)}
             </span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-600">Risk Score</span>
+            <span className="text-sm text-muted-foreground">Risk Score</span>
             <Badge className={getRiskBadgeColor(riskScore)}>
               {getRiskLabel(riskScore)} ({riskScore}/10)
             </Badge>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-600">Volatility</span>
-            <span className="text-sm font-medium text-slate-900">{formatPercent(volatility)}</span>
+            <span className="text-sm text-muted-foreground">Volatility</span>
+            <span className="text-sm font-medium tabular-nums">{formatPercent(volatility)}</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-600">AUM</span>
-            <span className="text-sm font-medium text-slate-900">{formatAUM(aum)}</span>
+            <span className="text-sm text-muted-foreground">AUM</span>
+            <span className="text-sm font-medium tabular-nums">{formatAUM(aum)}</span>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-2">
-          <Button variant="outline" className="w-full sm:flex-1" asChild>
+        <div className="flex flex-col sm:flex-row gap-2 pt-1">
+          <Button variant="outline" className="w-full sm:flex-1 rounded-xl" asChild>
             <Link href={`/fund/${id}`} className="flex items-center justify-center gap-2">
               <ExternalLink className="w-4 h-4" />
               View Detail
@@ -128,10 +128,10 @@ export function FundCard({
           </Button>
           <Button
             onClick={handleToggleSelect}
-            className={`w-full sm:flex-1 transition-all ${
+            className={`w-full sm:flex-1 rounded-xl transition-all ${
               isSelected
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-slate-200 text-slate-900 hover:bg-slate-300'
+                ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
             }`}
             disabled={!isSelected && !canAddMore()}
           >

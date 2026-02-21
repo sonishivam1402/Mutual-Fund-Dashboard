@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeToggle } from '@/components/theme-toggle'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -40,10 +42,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
-        {children}
-        <Analytics />
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('mutual-fund-theme');if(t==='light'||t==='dark')document.documentElement.classList.add(t);else document.documentElement.classList.add('dark');})();`,
+          }}
+        />
+      </head>
+      <body className="min-h-screen font-sans bg-background text-foreground">
+        <ThemeProvider>
+          <div className="fixed top-10 right-35 z-50">
+            <ThemeToggle />
+          </div>
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -26,35 +26,35 @@ interface CompareTableProps {
 
 export function CompareTable({ funds }: CompareTableProps) {
   return (
-    <Card className="border-slate-200 overflow-hidden">
+    <Card className="rounded-2xl border border-border shadow-sm overflow-hidden">
       <CardHeader>
-        <CardTitle>Detailed Comparison</CardTitle>
+        <CardTitle className="tracking-tight">Detailed Comparison</CardTitle>
         <CardDescription>Key metrics across selected funds</CardDescription>
       </CardHeader>
       <CardContent className="overflow-x-auto">
         <Table>
           <TableHeader>
-            <TableRow className="border-slate-200">
-              <TableHead className="bg-slate-50">Metric</TableHead>
+            <TableRow className="border-border">
+              <TableHead className="bg-muted">Metric</TableHead>
               {funds.map((fund) => (
-                <TableHead key={fund.symbol} className="bg-slate-50 text-center">
+                <TableHead key={fund.symbol} className="bg-muted text-center">
                   <div className="font-semibold">{fund.name}</div>
-                  <div className="text-xs text-slate-500">{fund.symbol}</div>
+                  <div className="text-xs text-muted-foreground">{fund.symbol}</div>
                 </TableHead>
               ))}
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow className="border-slate-200">
-              <TableCell className="font-medium text-slate-600">Category</TableCell>
+            <TableRow className="border-border">
+              <TableCell className="font-medium text-muted-foreground">Category</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-category`} className="text-center">
                   <Badge variant="outline">{fund.category}</Badge>
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200 bg-slate-50">
-              <TableCell className="font-medium text-slate-600">AUM</TableCell>
+            <TableRow className="border-border bg-muted/50">
+              <TableCell className="font-medium text-muted-foreground">AUM</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-aum`} className="text-center text-sm">
                   {formatAUM(fund.aum)}
@@ -69,8 +69,8 @@ export function CompareTable({ funds }: CompareTableProps) {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200 bg-slate-50">
-              <TableCell className="font-medium text-slate-600">Expense Ratio</TableCell>
+            <TableRow className="border-border bg-muted/50">
+              <TableCell className="font-medium text-muted-foreground">Expense Ratio</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-expense`} className="text-center text-sm">
                   {formatPercent(fund.expenseRatio)}
@@ -85,32 +85,32 @@ export function CompareTable({ funds }: CompareTableProps) {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200 bg-slate-50">
-              <TableCell className="font-medium text-slate-600">3Y Return</TableCell>
+            <TableRow className="border-border bg-muted/50">
+              <TableCell className="font-medium text-muted-foreground">3Y Return</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-3y`} className={`text-center text-sm font-semibold ${getReturnColor(fund.returns.threeYear)}`}>
                   {fund.returns.threeYear >= 0 ? '+' : ''}{formatPercent(fund.returns.threeYear)}
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200">
-              <TableCell className="font-medium text-slate-600">5Y Return</TableCell>
+            <TableRow className="border-border">
+              <TableCell className="font-medium text-muted-foreground">5Y Return</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-5y`} className={`text-center text-sm font-semibold ${getReturnColor(fund.returns.fiveYear)}`}>
                   {fund.returns.fiveYear >= 0 ? '+' : ''}{formatPercent(fund.returns.fiveYear)}
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200 bg-slate-50">
-              <TableCell className="font-medium text-slate-600">10Y Return</TableCell>
+            <TableRow className="border-border bg-muted/50">
+              <TableCell className="font-medium text-muted-foreground">10Y Return</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-10y`} className={`text-center text-sm font-semibold ${getReturnColor(fund.returns.tenYear)}`}>
                   {fund.returns.tenYear >= 0 ? '+' : ''}{formatPercent(fund.returns.tenYear)}
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200">
-              <TableCell className="font-medium text-slate-600">Risk Score</TableCell>
+            <TableRow className="border-border">
+              <TableCell className="font-medium text-muted-foreground">Risk Score</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-risk`} className="text-center">
                   <Badge className={getRiskBadgeColor(fund.riskScore)}>
@@ -119,8 +119,8 @@ export function CompareTable({ funds }: CompareTableProps) {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-slate-200 bg-slate-50">
-              <TableCell className="font-medium text-slate-600">Volatility</TableCell>
+            <TableRow className="border-border bg-muted/50">
+              <TableCell className="font-medium text-muted-foreground">Volatility</TableCell>
               {funds.map((fund) => (
                 <TableCell key={`${fund.symbol}-volatility`} className="text-center text-sm">
                   {formatPercent(fund.volatility)}

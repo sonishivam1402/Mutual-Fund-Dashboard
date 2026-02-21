@@ -1,23 +1,21 @@
 'use client';
 
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { generateAllocationChart } from '@/lib/fund-utils';
+import { generateAllocationChart, CHART_COLORS } from '@/lib/fund-utils';
 
 interface AllocationChartProps {
   fundName: string;
   allocation: Record<string, number>;
 }
 
-const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', '#6366f1', '#d946ef'];
-
 export function AllocationChart({ fundName, allocation }: AllocationChartProps) {
   const data = generateAllocationChart(allocation);
 
   return (
-    <Card className="border-slate-200">
+    <Card className="rounded-2xl border border-border shadow-sm">
       <CardHeader>
-        <CardTitle className="text-lg">{fundName}</CardTitle>
+        <CardTitle className="text-lg tracking-tight">{fundName}</CardTitle>
         <CardDescription>Asset allocation breakdown</CardDescription>
       </CardHeader>
       <CardContent>
@@ -30,14 +28,22 @@ export function AllocationChart({ fundName, allocation }: AllocationChartProps) 
               labelLine={false}
               label={({ name, value }) => `${name}: ${value}%`}
               outerRadius={80}
-              fill="#8884d8"
+              fill={CHART_COLORS[0]}
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip formatter={(value) => `${value}%`} />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: '#1e293b',
+                border: '1px solid #334155',
+                borderRadius: '0.75rem',
+                color: '#f1f5f9',
+              }}
+              formatter={(value) => `${value}%`}
+            />
           </PieChart>
         </ResponsiveContainer>
       </CardContent>
