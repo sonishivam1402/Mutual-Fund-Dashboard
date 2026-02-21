@@ -37,12 +37,12 @@ export default function ComparisonPage() {
 
   if (selectedFunds.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">No Funds Selected</h1>
-          <p className="text-slate-600 mb-6">Select funds from the Discovery page to compare</p>
+      <div className="min-h-screen bg-background flex items-center justify-center px-4">
+        <div className="text-center max-w-md">
+          <h1 className="text-3xl font-bold text-foreground tracking-tight mb-3">No Funds Selected</h1>
+          <p className="text-muted-foreground mb-6">Select funds from the Discovery page to compare</p>
           <Link href="/discovery">
-            <Button className="bg-primary text-white hover:bg-primary/90">
+            <Button className="rounded-xl">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Discovery
             </Button>
@@ -55,29 +55,29 @@ export default function ComparisonPage() {
   const fundList = selectedFunds as Fund[];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         {/* Header */}
         <div className="mb-8">
           <Link href="/discovery" className="inline-block mb-4">
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2 rounded-xl">
               <ArrowLeft className="w-4 h-4" />
               Back to Discovery
             </Button>
           </Link>
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">Fund Comparison</h1>
-          <p className="text-lg text-slate-600">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-2">Fund Comparison</h1>
+          <p className="text-muted-foreground text-base sm:text-lg">
             Comparing {fundList.length} fund{fundList.length !== 1 ? 's' : ''}
           </p>
         </div>
 
         {/* Fund Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-8">
           {fundList.map((fund) => (
-            <div key={fund.id} className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+            <div key={fund.id} className="bg-card rounded-2xl shadow-sm border border-border p-6 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3 mb-4">
                 {fund.image && (
-                  <div className="w-12 h-12 rounded-lg overflow-hidden bg-slate-50 border border-slate-200 shrink-0">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden bg-muted border border-border shrink-0">
                     <img
                       src={fund.image}
                       alt={fund.name}
@@ -86,18 +86,18 @@ export default function ComparisonPage() {
                   </div>
                 )}
                 <div className="min-w-0">
-                  <h3 className="text-lg font-semibold text-slate-900 mb-1">{fund.name}</h3>
-                  <p className="text-sm text-slate-600">{fund.symbol}</p>
+                  <h3 className="text-lg font-semibold text-foreground tracking-tight mb-1">{fund.name}</h3>
+                  <p className="text-sm text-muted-foreground">{fund.symbol}</p>
                 </div>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Manager</span>
-                  <span className="font-medium text-slate-900">{fund.manager}</span>
+                  <span className="text-muted-foreground">Manager</span>
+                  <span className="font-medium text-foreground">{fund.manager}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Inception</span>
-                  <span className="font-medium text-slate-900">{new Date(fund.inception).getFullYear()}</span>
+                  <span className="text-muted-foreground">Inception</span>
+                  <span className="font-medium text-foreground tabular-nums">{new Date(fund.inception).getFullYear()}</span>
                 </div>
               </div>
             </div>
@@ -130,10 +130,10 @@ export default function ComparisonPage() {
         {/* Top Holdings */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {fundList.map((fund) => (
-            <div key={`holdings-${fund.id}`} className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+            <div key={`holdings-${fund.id}`} className="bg-card rounded-2xl shadow-sm border border-border p-6">
               <div className="flex items-center gap-3 mb-4">
                 {fund.image && (
-                  <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-50 border border-slate-200 shrink-0">
+                  <div className="w-10 h-10 rounded-xl overflow-hidden bg-muted border border-border shrink-0">
                     <img
                       src={fund.image}
                       alt={fund.name}
@@ -141,16 +141,16 @@ export default function ComparisonPage() {
                     />
                   </div>
                 )}
-                <h3 className="text-lg font-semibold text-slate-900">{fund.name} - Top Holdings</h3>
+                <h3 className="text-lg font-semibold text-foreground tracking-tight">{fund.name} – Top Holdings</h3>
               </div>
               <div className="space-y-3">
                 {fund.holdings.slice(0, 5).map((holding, idx) => (
-                  <div key={idx} className="flex justify-between items-center pb-3 border-b border-slate-100 last:border-0">
-                    <span className="text-sm text-slate-700">
+                  <div key={idx} className="flex justify-between items-center pb-3 border-b border-border/50 last:border-0 last:pb-0">
+                    <span className="text-sm text-foreground">
                       {holding.name}
-                      {holding.symbol && <span className="text-xs text-slate-500 ml-2">({holding.symbol})</span>}
+                      {holding.symbol && <span className="text-xs text-muted-foreground ml-2">({holding.symbol})</span>}
                     </span>
-                    <span className="text-sm font-semibold text-slate-900">{holding.percentage}%</span>
+                    <span className="text-sm font-semibold tabular-nums">{holding.percentage}%</span>
                   </div>
                 ))}
               </div>

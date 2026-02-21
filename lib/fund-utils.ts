@@ -1,3 +1,6 @@
+/** Theme chart palette: purple (primary), blue, green, orange, teal - matches dark theme */
+export const CHART_COLORS = ['#a855f7', '#3b82f6', '#22c55e', '#f59e0b', '#14b8a6', '#8b5cf6', '#06b6d4'];
+
 export const formatCurrency = (value: number): string => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -16,25 +19,25 @@ export const formatNumber = (value: number, decimals: number = 2): string => {
 };
 
 export const getReturnColor = (value: number): string => {
-  if (value >= 15) return 'text-emerald-600';
-  if (value >= 10) return 'text-green-600';
-  if (value >= 5) return 'text-blue-600';
-  if (value >= 0) return 'text-slate-600';
-  return 'text-red-600';
+  if (value >= 15) return 'text-emerald-400';
+  if (value >= 10) return 'text-green-400';
+  if (value >= 5) return 'text-blue-400';
+  if (value >= 0) return 'text-muted-foreground';
+  return 'text-red-400';
 };
 
 export const getRiskColor = (score: number): string => {
-  if (score <= 3) return 'text-emerald-600';
-  if (score <= 5) return 'text-blue-600';
-  if (score <= 7) return 'text-amber-600';
-  return 'text-red-600';
+  if (score <= 3) return 'text-emerald-400';
+  if (score <= 5) return 'text-blue-400';
+  if (score <= 7) return 'text-amber-400';
+  return 'text-red-400';
 };
 
 export const getRiskBadgeColor = (score: number): string => {
-  if (score <= 3) return 'bg-emerald-100 text-emerald-700';
-  if (score <= 5) return 'bg-blue-100 text-blue-700';
-  if (score <= 7) return 'bg-amber-100 text-amber-700';
-  return 'bg-red-100 text-red-700';
+  if (score <= 3) return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+  if (score <= 5) return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+  if (score <= 7) return 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+  return 'bg-red-500/20 text-red-400 border-red-500/30';
 };
 
 export const getRiskLabel = (score: number): string => {
