@@ -1,0 +1,197 @@
+{
+  "funds": [
+    {
+      "id": "in001",
+      "name": "SBI Bluechip Fund",
+      "symbol": "SBIBLUE",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNX4NCCLEQ82r2TFMSJbimSqqb1_QdnnkThg&s",
+      "category": "Large Cap",
+      "aum": 420000000000,
+      "nav": 72.45,
+      "expenseRatio": 0.92,
+      "returns": {
+        "oneYear": 17.8,
+        "threeYear": 14.2,
+        "fiveYear": 13.6,
+        "tenYear": 12.9
+      },
+      "riskScore": 7,
+      "volatility": 15.1,
+      "holdings": [
+        { "name": "Reliance Industries", "symbol": "RELIANCE", "percentage": 8.4 },
+        { "name": "HDFC Bank", "symbol": "HDFCBANK", "percentage": 7.9 },
+        { "name": "ICICI Bank", "symbol": "ICICIBANK", "percentage": 6.8 },
+        { "name": "Infosys", "symbol": "INFY", "percentage": 5.6 },
+        { "name": "Larsen & Toubro", "symbol": "LT", "percentage": 4.2 }
+      ],
+      "allocation": {
+        "Financial Services": 32,
+        "Technology": 14,
+        "Energy": 12,
+        "Consumer": 16,
+        "Other": 26
+      },
+      "inception": "2006-02-14",
+      "manager": "Sohini Andani"
+    },
+    {
+      "id": "in002",
+      "name": "Axis Midcap Fund",
+      "symbol": "AXISMID",
+      "image": "https://pbs.twimg.com/profile_images/1105798073681244161/VjDBGunj_400x400.png",
+      "category": "Mid Cap",
+      "aum": 280000000000,
+      "nav": 85.32,
+      "expenseRatio": 0.74,
+      "returns": {
+        "oneYear": 21.6,
+        "threeYear": 18.4,
+        "fiveYear": 16.2,
+        "tenYear": 14.1
+      },
+      "riskScore": 8,
+      "volatility": 17.3,
+      "holdings": [
+        { "name": "Trent Ltd", "symbol": "TRENT", "percentage": 3.6 },
+        { "name": "PI Industries", "symbol": "PIIND", "percentage": 3.2 },
+        { "name": "SRF Ltd", "symbol": "SRF", "percentage": 3.1 },
+        { "name": "Coforge", "symbol": "COFORGE", "percentage": 2.9 },
+        { "name": "Voltas", "symbol": "VOLTAS", "percentage": 2.5 }
+      ],
+      "allocation": {
+        "Consumer": 22,
+        "Industrials": 18,
+        "Technology": 16,
+        "Financial Services": 12,
+        "Other": 32
+      },
+      "inception": "2011-02-18",
+      "manager": "Shreyash Devalkar"
+    },
+    {
+      "id": "in003",
+      "name": "Nippon India Small Cap Fund",
+      "symbol": "NIPPONSC",
+      "image": "https://assets-netstorage.groww.in/mf-assets/logos/reliance_groww.png",
+      "category": "Small Cap",
+      "aum": 360000000000,
+      "nav": 134.78,
+      "expenseRatio": 0.89,
+      "returns": {
+        "oneYear": 28.4,
+        "threeYear": 22.1,
+        "fiveYear": 19.8,
+        "tenYear": 17.5
+      },
+      "riskScore": 9,
+      "volatility": 19.2,
+      "holdings": [
+        { "name": "KPIT Technologies", "symbol": "KPITTECH", "percentage": 2.4 },
+        { "name": "Cholamandalam Financial", "symbol": "CHOLAFIN", "percentage": 2.1 },
+        { "name": "Happiest Minds", "symbol": "HAPPSTMNDS", "percentage": 1.9 },
+        { "name": "Balrampur Chini", "symbol": "BALRAMCHIN", "percentage": 1.8 },
+        { "name": "EID Parry", "symbol": "EIDPARRY", "percentage": 1.7 }
+      ],
+      "allocation": {
+        "Financial Services": 20,
+        "Technology": 18,
+        "Industrials": 16,
+        "Consumer": 14,
+        "Other": 32
+      },
+      "inception": "2010-09-16",
+      "manager": "Samir Rachh"
+    },
+    {
+      "id": "in004",
+      "name": "HDFC Balanced Advantage Fund",
+      "symbol": "HDFCBAL",
+      "image": "https://assets1.cleartax-cdn.com/clearsave/images/1599738090_hdfc_mf_v4.png",
+      "category": "Hybrid",
+      "aum": 520000000000,
+      "nav": 512.34,
+      "expenseRatio": 1.12,
+      "returns": {
+        "oneYear": 14.7,
+        "threeYear": 12.5,
+        "fiveYear": 11.9,
+        "tenYear": 11.2
+      },
+      "riskScore": 6,
+      "volatility": 11.4,
+      "holdings": [
+        { "name": "ICICI Bank", "symbol": "ICICIBANK", "percentage": 5.1 },
+        { "name": "State Bank of India", "symbol": "SBIN", "percentage": 4.2 },
+        { "name": "Reliance Industries", "symbol": "RELIANCE", "percentage": 3.9 }
+      ],
+      "allocation": {
+        "Equity": 65,
+        "Debt": 30,
+        "Cash": 5
+      },
+      "inception": "1994-02-01",
+      "manager": "Prashant Jain"
+    },
+    {
+      "id": "in005",
+      "name": "ICICI Prudential Bluechip Fund",
+      "symbol": "ICICIBLUE",
+      "image": "https://spng.pngfind.com/pngs/s/329-3290830_request-a-callback-icici-prudential-mutual-fund-logo.png",
+      "category": "Large Cap",
+      "aum": 410000000000,
+      "nav": 87.56,
+      "expenseRatio": 1.03,
+      "returns": {
+        "oneYear": 16.4,
+        "threeYear": 13.8,
+        "fiveYear": 12.9,
+        "tenYear": 12.1
+      },
+      "riskScore": 7,
+      "volatility": 14.6,
+      "holdings": [
+        { "name": "Bharti Airtel", "symbol": "BHARTIARTL", "percentage": 6.1 },
+        { "name": "Infosys", "symbol": "INFY", "percentage": 5.4 },
+        { "name": "HDFC Bank", "symbol": "HDFCBANK", "percentage": 5.0 }
+      ],
+      "allocation": {
+        "Financial Services": 30,
+        "Technology": 15,
+        "Telecom": 12,
+        "Other": 43
+      },
+      "inception": "2008-05-23",
+      "manager": "Sankaran Naren"
+    },
+    {
+      "id": "in006",
+      "name": "Aditya Birla Sun Life Corporate Bond Fund",
+      "symbol": "ABSLCORP",
+      "image": "https://mutualfund.adityabirlacapital.com/empower/thumnail.jpg",
+      "category": "Fixed Income",
+      "aum": 185000000000,
+      "nav": 65.78,
+      "expenseRatio": 0.38,
+      "returns": {
+        "oneYear": 6.1,
+        "threeYear": 5.4,
+        "fiveYear": 6.2,
+        "tenYear": 7.1
+      },
+      "riskScore": 3,
+      "volatility": 5.8,
+      "holdings": [
+        { "name": "Government Securities", "percentage": 34 },
+        { "name": "AAA Corporate Bonds", "percentage": 46 },
+        { "name": "PSU Bonds", "percentage": 12 }
+      ],
+      "allocation": {
+        "Government": 38,
+        "Corporate": 52,
+        "Cash": 10
+      },
+      "inception": "1997-04-07",
+      "manager": "Mohit Sharma"
+    }
+  ]
+}
