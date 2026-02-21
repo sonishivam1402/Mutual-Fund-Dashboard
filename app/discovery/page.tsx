@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { FundCard } from '@/components/fund-card';
 import { FilterBar } from '@/components/filter-bar';
 import { useFundStore } from '@/lib/store';
-import { BarChart3 } from 'lucide-react';
+import { BarChart3, X } from 'lucide-react';
 
 interface Fund {
   id: string;
@@ -40,7 +40,12 @@ export default function DiscoveryPage() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [loading, setLoading] = useState(true);
   const [compareMessage, setCompareMessage] = useState<string | null>(null);
-  const { selectedFunds } = useFundStore();
+  const { selectedFunds, clearSelected } = useFundStore();
+
+  const handleClearAll = () => {
+    clearSelected();
+    setCompareMessage(null);
+  };
 
   const handleCompareClick = () => {
     if (selectedFunds.length < 2) {
@@ -128,13 +133,23 @@ export default function DiscoveryPage() {
                 <p className="text-sm text-amber-600 dark:text-amber-400 font-medium mt-2">{compareMessage}</p>
               )}
             </div>
-            <Button
-              onClick={handleCompareClick}
-              className="w-full sm:w-auto shrink-0"
-            >
-              <BarChart3 className="w-4 h-4 mr-2" />
-              Compare Funds
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto shrink-0">
+              <Button
+                onClick={handleCompareClick}
+                className="w-full sm:w-auto"
+              >
+                <BarChart3 className="w-4 h-4 mr-2" />
+                Compare Funds
+              </Button>
+              <Button
+                variant="outline"
+                onClick={handleClearAll}
+                className="w-full sm:w-auto"
+              >
+                <X className="w-4 h-4 mr-2" />
+                Unselect all
+              </Button>
+            </div>
           </div>
         )}
 
